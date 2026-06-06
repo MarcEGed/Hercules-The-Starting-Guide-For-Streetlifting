@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Four Lifts — STREETLIFTING</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <nav class="site-nav" id="navbar">
+    <a href="index.html" class="nav-logo">STREETLIFTING</a>
+    <div class="nav-links">
+      <a href="index.html">HOME</a>
+      <a href="lifts.html" class="active">THE LIFTS</a>
+      <a href="start.html">START TRAINING</a>
+    </div>
+    <div class="nav-hamburger" id="hamburger">&#9776;</div>
+  </nav>
+  <div class="nav-mobile" id="mobileMenu">
+    <a href="index.html">HOME</a>
+    <a href="lifts.html">THE LIFTS</a>
+    <a href="start.html">START TRAINING</a>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="container-sl">
+      <div class="section-eyebrow">COMPETITION</div>
+      <h1 class="hero-title" style="font-size: clamp(3rem, 10vw, 7rem);">THE FOUR<br/>LIFTS</h1>
+      <p class="body-text">Everything you need to know about each competition movement.</p>
+    </div>
+  </section>
+
+  <!-- LIFT TABS -->
+  <section class="section-dark">
+    <div class="container-sl">
+      <div class="lift-tabs" id="liftTabs">
+        <button class="lift-tab active" data-lift="pullup">WEIGHTED PULL-UP</button>
+        <button class="lift-tab" data-lift="dip">WEIGHTED DIP</button>
+        <button class="lift-tab" data-lift="squat">BARBELL SQUAT</button>
+        <button class="lift-tab" data-lift="muscleup">WEIGHTED MUSCLE-UP</button>
+      </div>
+
+      <!-- PULL-UP PANEL -->
+      <div class="lift-panel active" id="panel-pullup">
+        <div class="lift-detail-layout">
+          <div class="lift-detail-main">
+            <div class="lift-badge">PULL</div>
+            <h2 class="lift-detail-title">WEIGHTED PULL-UP</h2>
+            <p class="body-text">The king of upper body pulling. In competition, extra weight is added via a belt, vest, or between the legs. Every rep is judged from dead hang to chin over bar.</p>
+
+            <div class="detail-block">
+              <h4 class="detail-heading">COMPETITION STANDARD</h4>
+              <ul class="standards-list">
+                <li>Start from a dead hang — arms fully extended, no kipping</li>
+                <li>Chin must clearly pass the bar on every rep</li>
+                <li>Controlled descent back to full extension</li>
+                <li>No leg drive, no kipping, no swinging</li>
+                <li>Weight must be secured and not touch the bar</li>
+              </ul>
+            </div>
+
+            <div class="detail-block">
+              <h4 class="detail-heading">COMMON RED LIGHTS</h4>
+              <ul class="redlight-list">
+                <li>Chin not clearing the bar (most common)</li>
+                <li>Not returning to full dead hang between reps</li>
+                <li>Excessive kipping or body swing</li>
+                <li>Weight touching the bar or structure</li>
+              </ul>
+            </div>
+
+            <div class="detail-block">
+              <h4 class="detail-heading">HOW TO TRAIN IT</h4>
+              <p class="body-text">Build your base to 15+ clean bodyweight reps before adding load. Then add weight slowly — 2.5kg increments. Train twice per week: one heavy day (3-5 reps weighted), one volume day (higher reps at lighter load). Accessory work: lat pulldowns, straight arm pulldowns, dead hangs for grip.</p>
+            </div>
+          </div>
+
+          <div class="lift-detail-side">
+            <div class="standards-table-wrap">
+              <h4 class="detail-heading">STRENGTH STANDARDS</h4>
+              <p class="body-text" style="font-size:0.8rem; opacity:0.6; margin-bottom:1rem;">Added weight (kg) at bodyweight 75–82kg</p>
+              <table class="standards-table">
+                <thead>
+                  <tr><th>LEVEL</th><th>ADDED KG</th><th>WHAT IT MEANS</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Beginner</td><td>0–10 kg</td><td>Building base strength</td></tr>
+                  <tr><td>Intermediate</td><td>10–30 kg</td><td>Solid foundation</td></tr>
+                  <tr><td>Competitive</td><td>30–50 kg</td><td>Podium contender</td></tr>
+                  <tr><td>Elite</td><td>50–70 kg</td><td>National level</td></tr>
+                  <tr><td>World Class</td><td>70 kg+</td><td>Top of the sport</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- API ACCESSORY SECTION -->
+            <div class="accessory-wrap">
+              <h4 class="detail-heading">ACCESSORY EXERCISES</h4>
+              <p class="body-text" style="font-size:0.8rem; opacity:0.6; margin-bottom:1rem;">Supporting work for pull-up strength</p>
+              <div class="accessory-filter-row">
+                <button class="accessory-filter active" data-muscle="back">BACK</button>
+                <button class="accessory-filter" data-muscle="biceps">BICEPS</button>
+              </div>
+              <div class="accessory-results" id="accessory-pullup">
+                <div class="api-loading">Loading exercises...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIP PANEL -->
+      <div class="lift-panel" id="panel-dip">
+        <div class="lift-detail-layout">
+          <div class="lift-detail-main">
+            <div class="lift-badge">PUSH</div>
+            <h2 class="lift-detail-title">WEIGHTED DIP</h2>
+            <p class="body-text">The pressing counterpart to the pull-up. Performed on parallel bars with added weight. Requires full lockout at the top and 90° elbow bend at the bottom minimum.</p>
+
+            <div class="detail-block">
+              <h4 class="detail-heading">COMPETITION STANDARD</h4>
+              <ul class="standards-list">
+                <li>Start at full lockout — arms completely straight</li>
+                <li>Lower until upper arm is parallel to the ground (90° at elbow)</li>
+                <li>Return to full lockout — no partial reps</li>
+                <li>Body stays controlled — no excessive forward lean</li>
+                <li>Feet must not touch the bars or ground</li>
+              </ul>
+            </div>
+
+            <div class="detail-block">
+              <h4 class="detail-heading">COMMON RED LIGHTS</h4>
+              <ul class="redlight-list">
+                <li>Not reaching 90° depth at the bottom</li>
+                <li>Not locking out fully at the top</li>
+                <li>Feet touching the structure</li>
+                <li>Excessive forward lean beyond what's needed</li>
+              </ul>
+            </div>
+
+            <div class="detail-block">
+              <h4 class="detail-heading">HOW TO TRAIN IT</h4>
+              <p class="body-text">Reach 20+ clean bodyweight dips before loading. Add weight in 5kg steps. Heavy day: 3-5 reps at 85-90% max. Volume day: multiple sets of 8-12 at moderate weight. Accessory: tricep pushdowns, chest press, shoulder stability work.</p>
+            </div>
+          </div>
+
+          <div class="lift-detail-side">
+            <div class="standards-table-wrap">
+              <h4 class="detail-heading">STRENGTH STANDARDS</h4>
+              <p class="body-text" style="font-size:0.8rem; opacity:0.6; margin-bottom:1rem;">Added weight (kg) at bodyweight 75–82kg</p>
+              <table class="standards-table">
+                <thead>
+                  <tr><th>LEVEL</th><th>ADDED KG</th><th>WHAT IT MEANS</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Beginner</td><td>0–15 kg</td><td>Building base strength</td></tr>
+                  <tr><td>Intermediate</td><td>15–40 kg</td><td>Solid foundation</td></tr>
+                  <tr><td>Competitive</td><td>40–60 kg</td><td>Podium contender</td></tr>
+                  <tr><td>Elite</td><td>60–90 kg</td><td>National level</td></tr>
+                  <tr><td>World Class</td><td>90 kg+</td><td>Top of the sport</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="accessory-wrap">
+              <h4 class="detail-heading">ACCESSORY EXERCISES</h4>
+              <p class="body-text" style="font-size:0.8rem; opacity:0.6; margin-bottom:1rem;">Supporting work for dip strength</p>
+              <div class="accessory-filter-row">
+                <button class="accessory-filter active" data-muscle="triceps">TRICEPS</button>
+                <button class="accessory-filter" data-muscle="chest">CHEST</button>
+              </div>
+              <div class="accessory-results" id="accessory-dip">
+                <div class="api-loading">Loading exercises...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SQUAT PANEL -->
+      <div class="lift-panel" id="panel-squat">
+        <div class="lift-detail-layout">
+          <div class="lift-detail-main">
+            <div class="lift-badge">LEGS</div>
+            <h2 class="lift-detail-title">BARBELL SQUAT</h2>
+            <p class="body-text">The raw strength anchor of streetlifting. A back squat judged to competition depth — hip crease below knee. Often the lift that separates the competitors from the contenders.</p>
+
+            <div class="detail-block">
+              <h4 class="detail-heading">COMPETITION STANDARD</h4>
+              <ul class="standards-list">
+                <li>Bar on upper back (high or low bar, athlete's choice)</li>
+                <li>Hip crease must pass below the top of the knee at the bottom</li>
+                <li>Stand to full lockout at the top</li>
+                <li>No squat suit or wraps unless federation allows</li>
+                <li>Wait for the judge's signal before beginning and racking</li>
+              </ul>
+            </div>
+
+            <div class="detail-block">
+              <h4 class="detail-heading">COMMON RED LIGHTS</h4>
+              <ul class="redlight-list">
+                <li>Depth not reached (most common fault in competition)</li>
+                <li>Not waiting for the rack signal</li>
+                <li>Forward lean causing bar to shift</li>
+                <li>Knee cave at the bottom</li>
+              </ul>
+            </div>
+
+            <div class="detail-block">
+              <h4 class="detail-heading">HOW TO TRAIN IT</h4>
+              <p class="body-text">Train depth from day one — never squat to a box that's too high. Program linear progression: add 2.5–5kg per session when you're newer. Run 3–5 rep sets for competition prep. Accessory: Romanian deadlifts, leg press, Bulgarian split squats, core work.</p>
+            </div>
+          </div>
+
+          <div class="lift-detail-side">
+            <div class="standards-table-wrap">
+              <h4 class="detail-heading">STRENGTH STANDARDS</h4>
+              <p class="body-text" style="font-size:0.8rem; opacity:0.6; margin-bottom:1rem;">Total weight lifted (kg) at bodyweight 75–82kg</p>
+              <table class="standards-table">
+                <thead>
+                  <tr><th>LEVEL</th><th>SQUAT (KG)</th><th>BW MULTIPLE</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Beginner</td><td>60–80 kg</td><td>~0.8–1.0x BW</td></tr>
+                  <tr><td>Intermediate</td><td>80–120 kg</td><td>~1.0–1.5x BW</td></tr>
+                  <tr><td>Competitive</td><td>120–160 kg</td><td>~1.5–2.0x BW</td></tr>
+                  <tr><td>Elite</td><td>160–200 kg</td><td>~2.0–2.5x BW</td></tr>
+                  <tr><td>World Class</td><td>200 kg+</td><td>2.5x BW+</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="accessory-wrap">
+              <h4 class="detail-heading">ACCESSORY EXERCISES</h4>
+              <p class="body-text" style="font-size:0.8rem; opacity:0.6; margin-bottom:1rem;">Supporting work for squat strength</p>
+              <div class="accessory-filter-row">
+                <button class="accessory-filter active" data-muscle="quadriceps">QUADS</button>
+                <button class="accessory-filter" data-muscle="glutes">GLUTES</button>
+              </div>
+              <div class="accessory-results" id="accessory-squat">
+                <div class="api-loading">Loading exercises...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MUSCLE-UP PANEL -->
+      <div class="lift-panel" id="panel-muscleup">
+        <div class="lift-detail-layout">
+          <div class="lift-detail-main">
+            <div class="lift-badge">SKILL</div>
+            <h2 class="lift-detail-title">WEIGHTED MUSCLE-UP</h2>
+            <p class="body-text">The technical crown of the sport. A bar muscle-up performed with additional weight — requires both pulling and pushing strength, plus the transition. The hardest lift to judge cleanly.</p>
+
+            <div class="detail-block">
+              <h4 class="detail-heading">COMPETITION STANDARD</h4>
+              <ul class="standards-list">
+                <li>Start from dead hang</li>
+                <li>Pull through the bar to a full dip lockout at the top</li>
+                <li>No kipping — strict muscle-up only (federation dependent)</li>
+                <li>Arms fully extended at the top before descent</li>
+                <li>Controlled return to dead hang</li>
+              </ul>
+            </div>
+
+            <div class="detail-block">
+              <h4 class="detail-heading">COMMON RED LIGHTS</h4>
+              <ul class="redlight-list">
+                <li>Not locking out at the top</li>
+                <li>Excessive kipping (federation dependent)</li>
+                <li>Not returning to dead hang</li>
+                <li>Incomplete transition (chest not clearing the bar)</li>
+              </ul>
+            </div>
+
+            <div class="detail-block">
+              <h4 class="detail-heading">HOW TO TRAIN IT</h4>
+              <p class="body-text">You need a strict muscle-up before adding any weight. Period. Build to 5+ clean bodyweight reps first. Then add 2.5kg at a time — transitions get harder fast with load. Train the pull and the dip separately at higher loads than your muscle-up max. Technique is everything here.</p>
+            </div>
+          </div>
+
+          <div class="lift-detail-side">
+            <div class="standards-table-wrap">
+              <h4 class="detail-heading">STRENGTH STANDARDS</h4>
+              <p class="body-text" style="font-size:0.8rem; opacity:0.6; margin-bottom:1rem;">Added weight (kg) at bodyweight 75–82kg</p>
+              <table class="standards-table">
+                <thead>
+                  <tr><th>LEVEL</th><th>ADDED KG</th><th>WHAT IT MEANS</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Beginner</td><td>BW only</td><td>Mastering technique</td></tr>
+                  <tr><td>Intermediate</td><td>5–20 kg</td><td>Building loaded strength</td></tr>
+                  <tr><td>Competitive</td><td>20–35 kg</td><td>Podium contender</td></tr>
+                  <tr><td>Elite</td><td>35–50 kg</td><td>National level</td></tr>
+                  <tr><td>World Class</td><td>50 kg+</td><td>Top of the sport</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="accessory-wrap">
+              <h4 class="detail-heading">ACCESSORY EXERCISES</h4>
+              <p class="body-text" style="font-size:0.8rem; opacity:0.6; margin-bottom:1rem;">Supporting work for muscle-up strength</p>
+              <div class="accessory-filter-row">
+                <button class="accessory-filter active" data-muscle="back">BACK</button>
+                <button class="accessory-filter" data-muscle="triceps">TRICEPS</button>
+              </div>
+              <div class="accessory-results" id="accessory-muscleup">
+                <div class="api-loading">Loading exercises...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section-cta">
+    <div class="container-sl text-center">
+      <h2 class="section-title">KNOW THE LIFTS.<br/>NOW BUILD YOUR PROGRAM.</h2>
+      <a href="start.html" class="btn-primary-sl">START TRAINING →</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container-sl">
+      <div class="footer-top">
+        <span class="nav-logo">STREETLIFTING</span>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="lifts.html">The Lifts</a>
+          <a href="start.html">Start Training</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Built for athletes, by an athlete.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/lifts.js"></script>
+</body>
+</html>

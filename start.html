@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Start Training — STREETLIFTING</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <nav class="site-nav" id="navbar">
+    <a href="index.html" class="nav-logo">STREETLIFTING</a>
+    <div class="nav-links">
+      <a href="index.html">HOME</a>
+      <a href="lifts.html">THE LIFTS</a>
+      <a href="start.html" class="active">START TRAINING</a>
+    </div>
+    <div class="nav-hamburger" id="hamburger">&#9776;</div>
+  </nav>
+  <div class="nav-mobile" id="mobileMenu">
+    <a href="index.html">HOME</a>
+    <a href="lifts.html">THE LIFTS</a>
+    <a href="start.html">START TRAINING</a>
+  </div>
+
+  <section class="page-header">
+    <div class="container-sl">
+      <div class="section-eyebrow">YOUR TOOLS</div>
+      <h1 class="hero-title" style="font-size: clamp(3rem, 10vw, 7rem);">START<br/>TRAINING</h1>
+      <p class="body-text">Three tools. Enter your numbers and leave with a program, your weight class, and your competition attempts — ready to go on Monday.</p>
+    </div>
+  </section>
+
+  <!-- DASHBOARD -->
+  <section class="section-dark">
+    <div class="container-sl">
+
+      <!-- TOOL 1: WEIGHT CLASS FINDER -->
+      <div class="tool-block">
+        <div class="tool-header">
+          <div class="tool-num">01</div>
+          <div>
+            <h2 class="tool-title">WEIGHT CLASS FINDER</h2>
+            <p class="tool-subtitle">Find your category and see what competitive totals look like at your level.</p>
+          </div>
+        </div>
+
+        <div class="tool-inputs-row">
+          <div class="tool-input-group">
+            <label class="assess-label">YOUR BODYWEIGHT (KG)</label>
+            <input type="number" class="assess-input" id="bwInput" placeholder="e.g. 78" min="40" max="200" />
+          </div>
+          <button class="btn-primary-sl" id="findClassBtn">FIND MY CLASS</button>
+        </div>
+
+        <!-- Dashboard cards - dynamic update (unique requirement) -->
+        <div class="dashboard-cards hidden" id="classCards">
+          <div class="dash-card" id="card-class">
+            <div class="dash-card-label">WEIGHT CLASS</div>
+            <div class="dash-card-value" id="val-class">—</div>
+            <div class="dash-card-sub" id="val-classsub">—</div>
+          </div>
+          <div class="dash-card" id="card-pullup-std">
+            <div class="dash-card-label">COMPETITIVE PULL-UP</div>
+            <div class="dash-card-value" id="val-pullup-std">—</div>
+            <div class="dash-card-sub">added weight (kg)</div>
+          </div>
+          <div class="dash-card" id="card-dip-std">
+            <div class="dash-card-label">COMPETITIVE DIP</div>
+            <div class="dash-card-value" id="val-dip-std">—</div>
+            <div class="dash-card-sub">added weight (kg)</div>
+          </div>
+          <div class="dash-card" id="card-squat-std">
+            <div class="dash-card-label">COMPETITIVE SQUAT</div>
+            <div class="dash-card-value" id="val-squat-std">—</div>
+            <div class="dash-card-sub">total weight (kg)</div>
+          </div>
+          <div class="dash-card" id="card-mu-std">
+            <div class="dash-card-label">COMPETITIVE MUSCLE-UP</div>
+            <div class="dash-card-value" id="val-mu-std">—</div>
+            <div class="dash-card-sub">added weight (kg)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOOL 2: ATTEMPT CALCULATOR -->
+      <div class="tool-block">
+        <div class="tool-header">
+          <div class="tool-num">02</div>
+          <div>
+            <h2 class="tool-title">ATTEMPT CALCULATOR</h2>
+            <p class="tool-subtitle">Enter your training max for each lift. Get your three competition attempts.</p>
+          </div>
+        </div>
+
+        <div class="attempt-grid">
+          <div class="attempt-lift-input">
+            <label class="assess-label">PULL-UP TRAINING MAX (added kg)</label>
+            <input type="number" class="assess-input" id="att-pullup" placeholder="e.g. 40" min="0" />
+          </div>
+          <div class="attempt-lift-input">
+            <label class="assess-label">DIP TRAINING MAX (added kg)</label>
+            <input type="number" class="assess-input" id="att-dip" placeholder="e.g. 55" min="0" />
+          </div>
+          <div class="attempt-lift-input">
+            <label class="assess-label">SQUAT TRAINING MAX (kg)</label>
+            <input type="number" class="assess-input" id="att-squat" placeholder="e.g. 130" min="0" />
+          </div>
+          <div class="attempt-lift-input">
+            <label class="assess-label">MUSCLE-UP TRAINING MAX (added kg)</label>
+            <input type="number" class="assess-input" id="att-mu" placeholder="e.g. 20" min="0" />
+          </div>
+        </div>
+        <button class="btn-primary-sl mt-3" id="calcAttemptsBtn">CALCULATE ATTEMPTS</button>
+
+        <div class="attempts-result hidden" id="attemptsResult">
+          <div class="attempts-table-wrap">
+            <table class="attempts-table">
+              <thead>
+                <tr>
+                  <th>LIFT</th>
+                  <th>OPENER <span class="attempt-pct">~90%</span></th>
+                  <th>2ND <span class="attempt-pct">~100%</span></th>
+                  <th>3RD <span class="attempt-pct">~103%</span></th>
+                </tr>
+              </thead>
+              <tbody id="attemptsBody"></tbody>
+            </table>
+          </div>
+          <p class="attempt-note">Openers are conservative — you want them in the bag. 3rd attempts should scare you slightly.</p>
+        </div>
+      </div>
+
+      <!-- TOOL 3: PROGRAM BUILDER -->
+      <div class="tool-block">
+        <div class="tool-header">
+          <div class="tool-num">03</div>
+          <div>
+            <h2 class="tool-title">FIRST PROGRAM BUILDER</h2>
+            <p class="tool-subtitle">Tell us where you're at and how many days you have. Get Week 1 built for you.</p>
+          </div>
+        </div>
+
+        <div class="program-inputs">
+          <div class="program-inputs-row">
+            <div class="tool-input-group">
+              <label class="assess-label">MAX PULL-UPS (bodyweight reps)</label>
+              <input type="number" class="assess-input" id="prog-pullup" placeholder="e.g. 12" min="0" />
+            </div>
+            <div class="tool-input-group">
+              <label class="assess-label">MAX DIPS (bodyweight reps)</label>
+              <input type="number" class="assess-input" id="prog-dip" placeholder="e.g. 18" min="0" />
+            </div>
+            <div class="tool-input-group">
+              <label class="assess-label">SQUAT (x bodyweight, e.g. 1.2)</label>
+              <input type="number" class="assess-input" id="prog-squat" placeholder="e.g. 1.2" step="0.1" min="0" />
+            </div>
+            <div class="tool-input-group">
+              <label class="assess-label">CAN YOU MUSCLE-UP?</label>
+              <select class="assess-input" id="prog-mu">
+                <option value="no">No</option>
+                <option value="bw">Yes — bodyweight only</option>
+                <option value="weighted">Yes — with added weight</option>
+              </select>
+            </div>
+          </div>
+          <div class="program-inputs-row">
+            <div class="tool-input-group">
+              <label class="assess-label">TRAINING DAYS PER WEEK</label>
+              <select class="assess-input" id="prog-days">
+                <option value="3">3 days</option>
+                <option value="4" selected>4 days</option>
+                <option value="5">5 days</option>
+              </select>
+            </div>
+            <div class="tool-input-group">
+              <label class="assess-label">YOUR BODYWEIGHT (KG)</label>
+              <input type="number" class="assess-input" id="prog-bw" placeholder="e.g. 78" min="40" />
+            </div>
+          </div>
+        </div>
+
+        <button class="btn-primary-sl mt-3" id="buildProgramBtn">BUILD MY WEEK 1</button>
+
+        <!-- Program session cards - dynamic update -->
+        <div class="program-result hidden" id="programResult">
+          <div class="program-result-header">
+            <h3 class="program-result-title">YOUR WEEK 1 PROGRAM</h3>
+            <p class="program-result-sub" id="progSubtext"></p>
+          </div>
+          <div class="session-cards" id="sessionCards"></div>
+          <div class="program-note">
+            <strong>Week 2+:</strong> Add 1 rep or 2.5kg to each main lift. If you miss a target two sessions in a row, deload by 10% and rebuild. Consistency beats intensity every time in the first 3 months.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container-sl">
+      <div class="footer-top">
+        <span class="nav-logo">STREETLIFTING</span>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="lifts.html">The Lifts</a>
+          <a href="start.html">Start Training</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Built for athletes, by an athlete.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
