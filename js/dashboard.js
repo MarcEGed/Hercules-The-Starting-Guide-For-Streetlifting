@@ -1,4 +1,4 @@
-// dashboard.js — Five training tools
+// dashboard.js: Five training tools
 // ES6 classes as required by project spec
 
 // ---- WEIGHT CLASS DATA ----
@@ -13,7 +13,7 @@ const WEIGHT_CLASSES = [
 ];
 
 // ============================================
-// TOOL 1 — Weight Class Finder
+// TOOL 1: Weight Class Finder
 // ============================================
 class WeightClassFinder {
   constructor() {
@@ -50,7 +50,7 @@ class WeightClassFinder {
 }
 
 // ============================================
-// TOOL 2 — Attempt Calculator
+// TOOL 2: Attempt Calculator
 // ============================================
 class AttemptCalculator {
   constructor() {
@@ -74,7 +74,7 @@ class AttemptCalculator {
     let hasData = false;
     const rows = lifts.map(lift => {
       const val = parseFloat(document.getElementById(lift.id).value);
-      if (!val || val <= 0) return `<tr><td>${lift.name}</td><td colspan="3" style="color:var(--text-muted)">—</td></tr>`;
+      if (!val || val <= 0) return `<tr><td>${lift.name}</td><td colspan="3" style="color:var(--text-muted)">-</td></tr>`;
       hasData = true;
       const opener = this.round(val * 0.90);
       const second = this.round(val * 1.00);
@@ -96,7 +96,7 @@ class AttemptCalculator {
 }
 
 // ============================================
-// TOOL 3 — Program Builder (upgraded)
+// TOOL 3: Program Builder (upgraded)
 // ============================================
 class ProgramBuilder {
   constructor() {
@@ -175,7 +175,7 @@ class ProgramBuilder {
 
     // ---- MINIMAL variant (3-day, compound focus only) ----
     const minimal = {
-      label: 'MINIMAL — 3 Days',
+      label: 'MINIMAL: 3 Days',
       tag:   'Essentials only. One main lift per session, low fatigue, high frequency.',
       sessions: [
         {
@@ -189,7 +189,7 @@ class ProgramBuilder {
           day: 'DAY 2', name: 'LEG', focus: 'Squat Strength',
           exercises: [
             { name: 'Barbell Squat', target: sqWeight ? `4 × 5 reps @ ${sqWeight}kg` : '4 × 5 reps', prog: progressionHTML(sqProg) },
-            { name: 'Core — Hollow Body Hold', target: '3 × 20 sec' },
+            { name: 'Core: Hollow Body Hold', target: '3 × 20 sec' },
           ]
         },
         {
@@ -252,7 +252,7 @@ class ProgramBuilder {
     ];
 
     const full = {
-      label: `FULL — ${days} Days`,
+      label: `FULL: ${days} Days`,
       tag:   `Complete program with accessories and skill work. All four competition lifts covered.`,
       sessions: allSessions.slice(0, days)
     };
@@ -268,8 +268,10 @@ class ProgramBuilder {
         <div class="session-exercises">
           ${s.exercises.map(ex => `
             <div class="session-ex">
-              <span class="session-ex-name">${ex.name}</span>
-              <span class="session-ex-target">${ex.target}</span>
+              <div class="session-ex-row">
+                <span class="session-ex-name">${ex.name}</span>
+                <span class="session-ex-target">${ex.target}</span>
+              </div>
               ${ex.prog ? `<div class="prog-toggle-wrap">
                 <button class="prog-toggle-btn" onclick="this.nextElementSibling.classList.toggle('hidden');this.textContent=this.nextElementSibling.classList.contains('hidden')?'▸ PROGRESSION':'▾ PROGRESSION'">▸ PROGRESSION</button>
                 <div class="hidden">${ex.prog}</div>
@@ -317,7 +319,7 @@ class ProgramBuilder {
 }
 
 // ============================================
-// TOOL 4 — Dynamic Rest Timer
+// TOOL 4: Dynamic Rest Timer
 // ============================================
 class RestTimer {
   constructor() {
@@ -339,11 +341,11 @@ class RestTimer {
   }
 
   rpeLabel(rpe) {
-    if (rpe <= 6) return 'Light — muscles not challenged much';
-    if (rpe === 7) return 'Moderate — 3 reps left in the tank';
-    if (rpe === 8) return 'Hard — 2 reps left';
-    if (rpe === 9) return 'Very hard — 1 rep left, form holding';
-    return 'Max effort — nothing left';
+    if (rpe <= 6) return 'Light: muscles not challenged much';
+    if (rpe === 7) return 'Moderate: 3 reps left in the tank';
+    if (rpe === 8) return 'Hard: 2 reps left';
+    if (rpe === 9) return 'Very hard: 1 rep left, form holding';
+    return 'Max effort: nothing left';
   }
 
   formatTime(s) {
@@ -373,7 +375,7 @@ class RestTimer {
           </div>
           <div class="rpe-display">
             <span class="rpe-value" id="rpeValue">RPE 8</span>
-            <span class="rpe-desc" id="rpeDesc">Hard — 2 reps left</span>
+            <span class="rpe-desc" id="rpeDesc">Hard: 2 reps left</span>
           </div>
         </div>
 
@@ -385,7 +387,7 @@ class RestTimer {
                 stroke-dasharray="326.7" stroke-dashoffset="0" />
             </svg>
             <div class="timer-inner">
-              <div class="timer-countdown" id="timerCountdown">—</div>
+              <div class="timer-countdown" id="timerCountdown">-</div>
               <div class="timer-label" id="timerLabel">READY</div>
             </div>
           </div>
@@ -479,7 +481,7 @@ class RestTimer {
 }
 
 // ============================================
-// TOOL 5 — Warmup Generator
+// TOOL 5: Warmup Generator
 // ============================================
 class WarmupGenerator {
   constructor() {
@@ -538,7 +540,7 @@ class WarmupGenerator {
         <div class="warmup-result hidden" id="warmupResult">
           <div class="warmup-title-row">
             <h3 class="program-result-title" id="warmupExName"></h3>
-            <p class="program-result-sub">Work up gradually — no set should be a grind before your working sets.</p>
+            <p class="program-result-sub">Work up gradually. No set should be a grind before your working sets.</p>
           </div>
           <div class="warmup-pyramid" id="warmupPyramid"></div>
           <p class="attempt-note" style="margin-top:1.2rem">Rest 60–90s between warmup sets. The final warmup set should feel smooth, not maximal.</p>
@@ -571,17 +573,22 @@ class WarmupGenerator {
         const w = i === 0 ? barWeight : this.roundTo(workingWeight * pct);
         if (w >= workingWeight) return; // skip if already at or past working weight
         const reps = i === 0 ? 10 : Math.max(1, Math.round(workingReps * (1 - pct * 0.4)));
-        steps.push({ weight: `${w}kg`, reps, note: i === 0 ? 'Empty bar — groove the pattern' : `${Math.round(pct * 100)}% of working weight` });
+        steps.push({ weight: `${w}kg`, reps, note: i === 0 ? 'Empty bar, groove the pattern' : `${Math.round(pct * 100)}% of working weight` });
       });
     } else if (type === 'weighted_bw') {
-      // For weighted pull-ups / dips: start with bodyweight-only sets, then add weight
-      const addedPcts = [0, 0, 0.40, 0.65, 0.85];
-      addedPcts.forEach((pct, i) => {
-        const addedKg = pct === 0 ? 0 : this.roundTo(workingWeight * pct);
-        if (addedKg >= workingWeight && i > 0) return;
-        const reps = i <= 1 ? Math.min(8, workingReps + 3) : Math.max(1, Math.round(workingReps * (1 - pct * 0.35)));
-        const note = pct === 0 ? 'Bodyweight only' : `+${addedKg}kg (${Math.round(pct * 100)}% of added load)`;
-        steps.push({ weight: pct === 0 ? 'BW' : `+${addedKg}kg`, reps, note });
+      // 1 BW set always, then 0-3 loaded sets scaled to working weight
+      steps.push({ weight: 'BW', reps: Math.min(8, workingReps + 2), note: 'Bodyweight only' });
+
+      let rampPcts;
+      if      (workingWeight <= 20) rampPcts = [];
+      else if (workingWeight <= 40) rampPcts = [0.55];
+      else if (workingWeight <= 70) rampPcts = [0.50, 0.75];
+      else                          rampPcts = [0.40, 0.65, 0.85];
+
+      rampPcts.forEach(pct => {
+        const w = this.roundTo(workingWeight * pct);
+        const reps = Math.max(2, Math.round(workingReps * (1.1 - pct)));
+        steps.push({ weight: `+${w}kg`, reps, note: `+${w}kg (${Math.round(pct * 100)}% of added load)` });
       });
     } else {
       // Bodyweight: ramp reps only
@@ -592,12 +599,10 @@ class WarmupGenerator {
       });
     }
 
-    // Final potentiation set: 1 rep at or just below working weight
-    if (type !== 'bodyweight' && workingWeight > 20) {
-      const potWeight = type === 'barbell'
-        ? this.roundTo(workingWeight * 0.95)
-        : `+${this.roundTo(workingWeight * 0.95)}kg`;
-      steps.push({ weight: typeof potWeight === 'number' ? `${potWeight}kg` : potWeight, reps: 1, note: 'Potentiation single — feel the weight, stay fast' });
+    // Potentiation single: barbell only, only when weight is heavy enough to matter
+    if (type === 'barbell' && workingWeight > 80) {
+      const potWeight = this.roundTo(workingWeight * 0.95);
+      steps.push({ weight: `${potWeight}kg`, reps: 1, note: 'Potentiation single, feel the weight, stay fast' });
     }
 
     return steps;
@@ -616,7 +621,7 @@ class WarmupGenerator {
     const pyramid = this.buildPyramid(type, weight, reps, bw);
 
     document.getElementById('warmupExName').textContent =
-      `${exercise.toUpperCase()} — Working: ${type === 'weighted_bw' ? `+${weight}kg` : `${weight}kg`} × ${reps} reps × ${sets} sets`;
+      `${exercise.toUpperCase()}: Working weight ${type === 'weighted_bw' ? `+${weight}kg` : `${weight}kg`} × ${reps} reps × ${sets} sets`;
 
     const pyramidHTML = pyramid.map((step, i) => {
       const barFill = Math.round(((i + 1) / (pyramid.length + 1)) * 100);
@@ -637,7 +642,7 @@ class WarmupGenerator {
         <div class="warmup-step-num">▶</div>
         <div class="warmup-step-info">
           <div class="warmup-step-main">${type === 'weighted_bw' ? `+${weight}kg` : `${weight}kg`} × ${reps} reps × ${sets} sets</div>
-          <div class="warmup-step-note">Working sets — full effort</div>
+          <div class="warmup-step-note">Working sets, full effort</div>
           <div class="warmup-bar-wrap">
             <div class="warmup-bar-fill" style="width:100%;background:var(--accent)"></div>
           </div>
@@ -679,10 +684,10 @@ function injectStyles() {
   const style = document.createElement('style');
   style.textContent = `
     /* ---- Variant blocks (program builder) ---- */
-    .variant-block { margin-bottom: 2.5rem; }
-    .variant-header { margin-bottom: 1rem; }
-    .variant-label { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.1em; color: var(--accent, #e8ff00); }
-    .variant-tag { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--text-muted, #888); margin-top: 0.2rem; }
+    .variant-block { }
+    .variant-header { margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border, #2a2a2a); }
+    .variant-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; color: var(--accent, #e8ff00); margin-bottom: 0.35rem; }
+    .variant-tag { font-family: 'DM Mono', monospace; font-size: 0.8rem; color: var(--text-muted, #555); }
 
     /* ---- Progression scheme ---- */
     .prog-toggle-wrap { margin-top: 0.5rem; }

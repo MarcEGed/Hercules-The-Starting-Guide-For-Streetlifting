@@ -1,4 +1,4 @@
-// assessment.js — Self-assessment tool on home page
+// assessment.js: Self-assessment tool on home page
 // ES6 class as required by project spec
 
 class SelfAssessment {
@@ -12,7 +12,7 @@ class SelfAssessment {
   getLevelFromPullups(reps) {
     if (reps >= 20) return { level: 'ADVANCED', msg: 'You\'re ready to start adding weight to pull-ups immediately.' };
     if (reps >= 12) return { level: 'INTERMEDIATE', msg: 'Solid base. Build to 15+ reps before loading.' };
-    if (reps >= 5)  return { level: 'DEVELOPING', msg: 'Focus on volume — get to 12+ clean reps first.' };
+    if (reps >= 5)  return { level: 'DEVELOPING', msg: 'Focus on volume. Get to 12+ clean reps first.' };
     return { level: 'BEGINNER', msg: 'Start with negatives and band-assisted work.' };
   }
 
@@ -49,7 +49,7 @@ class SelfAssessment {
     const sqLevel  = this.getLevelFromSquat(squatBW);
 
     const muText = muStatus === 0
-      ? 'No muscle-up yet — that\'s fine. It\'s not where you start.'
+      ? 'No muscle-up yet. That\'s fine; it\'s not where you start.'
       : muStatus === 1
       ? 'You have a bodyweight muscle-up. Build to 3–5 clean reps before loading.'
       : 'You\'re already doing weighted muscle-ups. You\'re ahead of most athletes.';
@@ -66,9 +66,9 @@ class SelfAssessment {
     this.resultDiv.innerHTML = `
       <div class="assess-result-level">${overall}</div>
       <div class="assess-result-text">
-        <strong>Pull-ups:</strong> ${pullups} reps — ${puResult.level} — ${puResult.msg}<br/>
-        <strong>Dips:</strong> ${dips} reps — ${dipLevel}<br/>
-        <strong>Squat:</strong> ${squatBW}x BW — ${sqLevel}<br/>
+        <strong>Pull-ups:</strong> ${pullups} reps, ${puResult.level}: ${puResult.msg}<br/>
+        <strong>Dips:</strong> ${dips} reps, ${dipLevel}<br/>
+        <strong>Squat:</strong> ${squatBW}x BW, ${sqLevel}<br/>
         <strong>Muscle-up:</strong> ${muText}<br/><br/>
         <strong>Your next step:</strong> ${nextStepMap[overall]}
       </div>

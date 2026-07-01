@@ -1,4 +1,4 @@
-// nav.js — sticky scroll behavior + mobile toggle
+// nav.js: sticky scroll behavior + mobile toggle
 // ES6 class as required by project spec
 
 class Navigation {

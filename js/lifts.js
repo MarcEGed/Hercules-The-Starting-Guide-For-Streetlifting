@@ -1,4 +1,4 @@
-// lifts.js — Tab switching + API Ninjas exercise fetch
+// lifts.js: Tab switching + API Ninjas exercise fetch
 // ES6 classes as required by project spec
 
 // ---- API CONFIG ----
@@ -97,7 +97,7 @@ class AccessoryLoader {
       this.renderExercises(filteredData, container);
 
     } catch (err) {
-      // Graceful fallback — show curated exercises if API fails
+      // Graceful fallback: show curated exercises if API fails
       container.innerHTML = this.fallbackHTML(muscle);
     }
   }

@@ -571,15 +571,15 @@ body {
 }
 
 .standards-list li::before {
-  content: '✓';
+  content: '—';
   position: absolute;
   left: 0;
-  color: var(--green);
+  color: var(--accent);
   font-size: 0.75rem;
 }
 
 .redlight-list li::before {
-  content: '✗';
+  content: '—';
   position: absolute;
   left: 0;
   color: var(--red);
@@ -841,6 +841,12 @@ body {
 
 .program-result { margin-top: 2.5rem; animation: fadeUp 0.3s ease both; }
 
+.program-variants {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
 .program-result-header {
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
@@ -895,13 +901,19 @@ body {
 
 .session-ex {
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding-bottom: 0.5rem;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding-bottom: 0.75rem;
   border-bottom: 1px solid var(--border);
 }
 
 .session-ex:last-child { border-bottom: none; }
+
+.session-ex-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
 
 .session-ex-name {
   font-size: 0.85rem;
@@ -912,6 +924,8 @@ body {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   color: var(--accent);
+  flex-shrink: 0;
+  margin-left: 1rem;
 }
 
 .program-note {
@@ -984,3 +998,11 @@ body {
 
 /* Bootstrap override — kill purple */
 .btn { border-radius: 0; }
+
+/* Remove number input spinners */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] { -moz-appearance: textfield; appearance: textfield; }
