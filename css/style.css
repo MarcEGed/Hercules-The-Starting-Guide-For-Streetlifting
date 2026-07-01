@@ -63,6 +63,15 @@ body {
   letter-spacing: 0.1em;
   color: var(--accent);
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-logo-icon {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
 }
 
 .nav-links {
