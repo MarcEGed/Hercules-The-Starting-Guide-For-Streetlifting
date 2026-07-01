@@ -369,8 +369,21 @@ body {
   text-align: center;
 }
 
+.split-image {
+  position: relative;
+}
+
+.split-img {
+  width: 80%;
+  height: 80%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(20%);
+}
+
 @media (max-width: 900px) {
   .split-layout { grid-template-columns: 1fr; gap: 3rem; }
+  .split-image { max-height: 400px; overflow: hidden; }
 }
 
 /* ============================================
